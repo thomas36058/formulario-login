@@ -31,9 +31,11 @@ body {
     height: 100%;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-
-
     left: 0;
+}
+.content.forgot-password::before{
+    width: 100%;
+    border-radius: 15px;
 }
 .title {
     font-size: 28px;
@@ -65,7 +67,7 @@ body {
     padding: 10px 50px;
     cursor: pointer;
     font-weight: bold;
-    width: 150px;
+    width: fit-content;
     align-self: center;
     border: none;
     margin-top: 1rem;
@@ -99,6 +101,9 @@ body {
     text-align: center;
     width: 40%;
     z-index: 10;
+}
+.first-column.full{
+    width: 100%;
 }
 .second-column {
     width: 60%;
@@ -138,6 +143,10 @@ body {
     flex-direction: column;
     width: 55%;
 }
+.full .form{
+    width: 40%;
+    margin: 0 auto;
+}
 .form input {
     height: 45px;
     width: 100%;
@@ -175,6 +184,13 @@ input:-webkit-autofill
     order: 1;
     z-index: -1;
 }
+.entrar{
+    color: #fff;
+    font-size: 14px;
+    margin: 15px 0;
+    text-align: center;
+    display: block;
+}
 .password {
     color: #34495e;
     font-size: 14px;
@@ -184,13 +200,29 @@ input:-webkit-autofill
 .password::first-letter {
     text-transform: capitalize;
 }
-
 .fail-login{
     padding: 8px 0;
     text-align: center;
     background-color: red;
     color: #fff;
     font-size: 14px;
+}
+.forgot-password .fail-login{
+    display: block;
+    width: 35%;
+    margin: 15px auto;
+}
+.sucess-login{
+    padding: 8px 0;
+    text-align: center;
+    background-color: green;
+    color: #fff;
+    font-size: 14px;
+}
+.forgot-password .sucess-login{
+    display: block;
+    width: 35%;
+    margin: 15px auto;
 }
 
 .sign-in-js .first-content .first-column {

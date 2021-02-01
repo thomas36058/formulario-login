@@ -1,5 +1,6 @@
 <?php
 session_start();
+unset($_SESSION['email_nao_cadastrado']);
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Login</title>
+    <title>Tela de Login</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -21,16 +22,16 @@ session_start();
 
             <div class="first-column">
 
-                <h2 class="title title-primary">welcome back!</h2>
-                <p class="description description-primary">To keep connected with us</p>
-                <p class="description description-primary">please login with your personal info</p>
-                <button id="signin" class="btn btn-primary">sign in</button>
+                <h2 class="title title-primary">Bem-vindo de volta!</h2>
+                <p class="description description-primary">Para acessar sua conta</p>
+                <p class="description description-primary">por favor entre com suas informações</p>
+                <button id="signin" class="btn btn-primary">entrar</button>
 
             </div>    
 
             <div class="second-column">
 
-                <h2 class="title title-second">create account</h2>
+                <h2 class="title title-second">crie uma conta</h2>
 
                 <div class="social-media">
                     <ul class="list-social-media">
@@ -52,26 +53,39 @@ session_start();
                     </ul>
                 </div><!-- social media -->
 
-                <p class="description description-second">or use your email for registration:</p>
+                <p class="description description-second">ou use seu email para se cadastrar:</p>
 
-                <form action="register.php" class="form">
+                <form action="cadastro.php" class="form" method="POST">
                     <label class="label-input" for="">
                         <i class="far fa-user icon-modify"></i>
-                        <input type="text" name="nome" placeholder="Name">
+                        <input type="text" name="nome_cadastro" placeholder="Nome">
                     </label>
                     
                     <label class="label-input" for="">
                         <i class="far fa-envelope icon-modify"></i>
-                        <input type="email" name="email" placeholder="Email">
+                        <input type="email" name="email_cadastro" placeholder="Email">
                     </label>
                     
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" name="senha" placeholder="Password">
+                        <input type="password" name="senha_cadastro" placeholder="Senha">
                     </label>
                     
+                    <?php if( isset($_SESSION['email_existente']) ): ?>
+                        <p class="fail-login">E-mail ja cadastrado!</p>
+                    <?php 
+                        unset($_SESSION['email_existente']);
+                        endif; 
+                    ?>
                     
-                    <button class="btn btn-second">sign up</button>        
+                    <?php if( isset($_SESSION['email_nao_cadastrado']) ): ?>
+                        <p class="sucess-login">Usuário cadastrado com sucesso!</p>
+                        <?php 
+                        unset($_SESSION['email_nao_cadastrado']);
+                        endif; 
+                    ?>
+
+                    <button class="btn btn-second">cadastrar</button>        
                 </form>
 
             </div><!-- second column -->
@@ -82,15 +96,15 @@ session_start();
 
             <div class="first-column">
 
-                <h2 class="title title-primary">hello, friend!</h2>
-                <p class="description description-primary">Enter your personal details</p>
-                <p class="description description-primary">and start journey with us</p>
-                <button id="signup" class="btn btn-primary">sign up</button>
+                <h2 class="title title-primary">Olá!</h2>
+                <p class="description description-primary">Digite seus dados pessoais</p>
+                <p class="description description-primary">e se junte a nós</p>
+                <button id="signup" class="btn btn-primary">se cadastrar</button>
 
             </div>
 
             <div class="second-column">
-                <h2 class="title title-second">sign in to developer</h2>
+                <h2 class="title title-second">entrar</h2>
 
                 <div class="social-media">
                     <ul class="list-social-media">
@@ -112,20 +126,20 @@ session_start();
                     </ul>
                 </div><!-- social media -->
 
-                <p class="description description-second">or use your email account:</p>
+                <p class="description description-second">ou use seu email:</p>
 
                 <form action="login.php" class="form" method="POST">
                     <label class="label-input" for="">
                         <i class="far fa-envelope icon-modify"></i>
-                        <input type="email" name="email_login" placeholder="Email">
+                        <input type="email" name="email_login" placeholder="E-mail">
                     </label>
                 
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" name="senha_login" placeholder="Password">
+                        <input type="password" name="senha_login" placeholder="Senha">
                     </label>
                 
-                    <a class="password" href="#">forgot your password?</a>
+                    <a class="password" href="esqueceu_senha.php">esqueceu sua senha?</a>
 
                     <?php if( isset($_SESSION['nao_autenticado']) ): ?>
                         <p class="fail-login">Usuário ou senha inválido</p>
@@ -134,7 +148,7 @@ session_start();
                         endif; 
                     ?>
 
-                    <button class="btn btn-second">sign in</button>
+                    <button class="btn btn-second">acessar</button>
                 </form>
 
             </div><!-- second column -->
