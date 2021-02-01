@@ -1,8 +1,5 @@
 <?php
 
-// error_reporting(E_ALL);
-// ini_set("display_errors", 1);
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -16,16 +13,16 @@ try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;  
     $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                       // Set the SMTP server to send through
+    $mail->Host       = '';                       // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'thomas.simoes@mktvirtual.com.br';      // SMTP username
-    $mail->Password   = 'Thomas@36058';                         // SMTP password
+    $mail->Username   = '';      // SMTP username
+    $mail->Password   = '';                         // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port       = 465;                                    // TCP port to connect to
 
     //From email address and name
-    $mail->From = "thomas.simoes@mktvirtual.com.br";
-    $mail->FromName = "Thomas De Grava";
+    $mail->From = "";
+    $mail->FromName = "";
 
     //To address and name
     $mail->addAddress("{$email}");
